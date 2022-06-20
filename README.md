@@ -1,20 +1,19 @@
-# react-scratchcard-v2
+# react-scratchcard-v4
 
 > A scratchcard component for React
 
-[![NPM](https://img.shields.io/npm/v/react-scratchcard-v2.svg)](https://www.npmjs.com/package/react-scratchcard-v2) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
+[![NPM](https://img.shields.io/npm/v/react-scratchcard-v4.svg)](https://www.npmjs.com/package/react-scratchcard-v4) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ##### Original repo by Aleksik (not maintained)
+
 https://github.com/aleksik/react-scratchcard
 
-##### V2 Improvement ✨
-- Resize the image using width and height props (in the original repo, the image was croped)
-- Smooth fade out animation on scratch complete
-- Add type definition (ts)
-- Change brush size through props
-- Use custom brush through props
-- Define a custom check zone through props
+This is a clone of https://github.com/dopey2/react-scratchcard-v2
+
+##### V4 Improvement ✨
+
+Fixed "Unable to preventDefault inside passive event listener"
+Fixed Multiple onChange reqests
 
 ## Demo
 
@@ -23,29 +22,29 @@ https://github.com/aleksik/react-scratchcard
 ## Install
 
 ```bash
-npm install --save react-scratchcard-v2
-```
-or
-```bash
-yarn add react-scratchcard-v2
+npm install --save react-scratchcard-v4
 ```
 
+or
+
+```bash
+yarn add react-scratchcard-v4
+```
 
 ## Usage
 
 ```tsx
-import React, { useRef }  from 'react';
-import ScratchCard from 'react-scratchcard-v2';
+import React, { useRef } from 'react';
+import ScratchCard from 'react-scratchcard-v4';
 
 import * as IMG from './img.jpg';
 
 const App = () => {
-
   const ref = useRef<ScratchCard>(null);
 
   const onClickReset = () => {
     ref.current && ref.current.reset();
-  }
+  };
 
   return (
     <div>
@@ -57,13 +56,14 @@ const App = () => {
         finishPercent={80}
         onComplete={() => console.log('complete')}
       >
-        <div style={{
-          display: 'flex',
-          width: '100%',
-          height: '100%',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            height: '100%',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
         >
           <h1>Scratch card</h1>
         </div>
@@ -100,7 +100,7 @@ const App = () => {
 or you can use CUSTOM_BRUSH_PRESET object
 
 ```tsx
-import { CUSTOM_BRUSH_PRESET } from 'react-scratchcard-v2';
+import { CUSTOM_BRUSH_PRESET } from 'react-scratchcard-v4';
 
 const App = () => {
   return (
@@ -115,46 +115,43 @@ const App = () => {
         <h1>Scratch card</h1>
       </ScratchCard>
     </div>
-  )
-}
+  );
+};
 ```
-
 
 ## Type
 
 ### Props
 
-| **name**          | **type**        | **default** |
-|-------------------|-----------------|-------------|
-| width             | number          |             |
-| height            | number          |             |
-| image             | File or Base64  |             |
-| finishPercent     | ?number         | 70          |
-| brushSize         | ?number         | 20          |
-| fadeOutOnComplete | ?boolean        | true        |
-| onComplete        | ?callback       |             |
-| customBrush       | ?CustomBrush    |             |
-| customCheckZone   | ?CustomCheckZone|             |
+| **name**          | **type**         | **default** |
+| ----------------- | ---------------- | ----------- |
+| width             | number           |             |
+| height            | number           |             |
+| image             | File or Base64   |             |
+| finishPercent     | ?number          | 70          |
+| brushSize         | ?number          | 20          |
+| fadeOutOnComplete | ?boolean         | true        |
+| onComplete        | ?callback        |             |
+| customBrush       | ?CustomBrush     |             |
+| customCheckZone   | ?CustomCheckZone |             |
 
 ### CustomBrush
 
 | **name** | **type**       |
-|----------|----------------|
+| -------- | -------------- |
 | width    | number         |
 | height   | number         |
 | image    | File or Base64 |
 
 ### CustomCheckZone
 
-| **name** | **type**       |
-|----------|----------------|
-| x        | number         |
-| y        | number         |
-| width    | number         |
-| height   | number         |
-
-
+| **name** | **type** |
+| -------- | -------- |
+| x        | number   |
+| y        | number   |
+| width    | number   |
+| height   | number   |
 
 ## License
 
-MIT © [dopey2](https://github.com/dopey2)
+MIT © [gshudhanshu](https://github.com/gshudhanshu)
