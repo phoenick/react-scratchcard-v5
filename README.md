@@ -1,4 +1,4 @@
-# react-scratchcard-v4
+# react-scratchcard-v5
 
 > A scratchcard component for React
 
