@@ -22,6 +22,7 @@ interface Props {
   width: number
   height: number
   image: any
+  quality?: number
   finishPercent?: number
   onComplete?: () => void
   brushSize?: number
@@ -48,7 +49,7 @@ class Scratch extends Component<Props, State> {
   brushImage?: any
 
   image: HTMLImageElement;
-  
+
   isFinished: boolean = false;
 
   constructor(props: Props) {
@@ -263,8 +264,8 @@ class Scratch extends Component<Props, State> {
           }}
           className='ScratchCard__Canvas'
           style={canvasStyle}
-          width={this.props.width}
-          height={this.props.height}
+          width={this.props.width * (this.props.quality || 1) }
+          height={this.props.height * (this.props.quality || 1)}
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleMouseDown}
           onMouseMove={this.handleMouseMove}
