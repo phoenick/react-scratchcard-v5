@@ -62,10 +62,14 @@ class Scratch extends Component<Props, State> {
     this.lastPoint = null;
     this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
 
+    this.quality = this.props.quality || 1
+    this.canvasWidth = this.props.width * this.quality
+    this.canvasHeight = this.props.height * this.quality
+
     this.image = new Image();
     this.image.crossOrigin = 'Anonymous';
     this.image.onload = () => {
-      this.ctx.drawImage(this.image, 0, 0, this.props.width, this.props.height);
+      this.ctx.drawImage(this.image, 0, 0, this.canvasWidth, this.canvasHeight);
       this.setState({ loaded: true });
     };
 
@@ -83,7 +87,7 @@ class Scratch extends Component<Props, State> {
   reset = () => {
     this.canvas.style.opacity = '1';
     this.ctx.globalCompositeOperation = 'source-over';
-    this.ctx.drawImage(this.image, 0, 0, this.props.width, this.props.height);
+    this.ctx.drawImage(this.image, 0, 0, this.canvasWidth, this.canvasHeight);
     this.isFinished = false;
   }
 
@@ -139,6 +143,9 @@ class Scratch extends Component<Props, State> {
       x = e.touches[0].clientX - left - scrollLeft;
       y = e.touches[0].clientY - top - scrollTop;
     }
+
+    x = x*this.quality
+    y = y*this.quality
 
     return { x, y };
   }
@@ -264,8 +271,8 @@ class Scratch extends Component<Props, State> {
           }}
           className='ScratchCard__Canvas'
           style={{...canvasStyle, width: this.props.width, height: this.props.height}}
-          width={this.props.width * (this.props.quality || 1) }
-          height={this.props.height * (this.props.quality || 1)}
+          width={this.canvasWidth }
+          height={this.canvasHeight}
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleMouseDown}
           onMouseMove={this.handleMouseMove}
