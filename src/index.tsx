@@ -52,6 +52,8 @@ class Scratch extends Component<Props, State> {
 
   isFinished: boolean = false;
 
+  quality: Number
+
   constructor(props: Props) {
     super(props);
     this.state = { loaded: false, finished: false };
