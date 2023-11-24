@@ -53,6 +53,8 @@ class Scratch extends Component<Props, State> {
   isFinished: boolean = false;
 
   quality: Number
+  canvasWidth: Number
+  canvasHeight: Number
 
   constructor(props: Props) {
     super(props);
