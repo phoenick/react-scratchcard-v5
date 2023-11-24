@@ -263,7 +263,7 @@ class Scratch extends Component<Props, State> {
             this.canvas = ref;
           }}
           className='ScratchCard__Canvas'
-          style={canvasStyle}
+          style={{...canvasStyle, width: this.props.width, height: this.props.height}}
           width={this.props.width * (this.props.quality || 1) }
           height={this.props.height * (this.props.quality || 1)}
           onMouseDown={this.handleMouseDown}
@@ -272,7 +272,6 @@ class Scratch extends Component<Props, State> {
           onTouchMove={this.handleMouseMove}
           onMouseUp={this.handleMouseUp}
           onTouchEnd={this.handleMouseUp}
-          style={{ width: this.props.width, height: this.props.height}}
         />
         <div className='ScratchCard__Result' style={resultStyle}>
           {this.props.children}
